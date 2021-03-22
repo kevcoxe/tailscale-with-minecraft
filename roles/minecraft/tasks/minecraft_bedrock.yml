@@ -1,0 +1,38 @@
+- name: include bedrock vars
+  include_vars:
+    file: minecraft_bedrock.yml
+
+- name: make sure minecraft dir exists
+  file:
+    path: "{{ minecraft_dir }}"
+    state: directory
+    owner: "{{ minecraft_user }}"
+
+- name: download bedrock
+  get_url:
+    url: "{{ minecraft_download_url }}"
+    dest: "{{ minecraft_dir }}"
+  register: bin_files
+
+- name: unzip bedrock
+  unarchive:
+    src: "{{ item }}"
+    dest: "{{ minecraft_dir }}"
+    copy: no
+  with_items:
+    - "{{ bin_files.dest }}"
+
+- name: create minecraft service
+  template:
+    src: minecraft.service.j2
+    dest: "{{ minecraft_service_location }}"
+
+- name: reload daemon
+  systemd:
+    daemon_reload: yes
+
+- name: start minecraft service
+  systemd:
+    name: minecraft
+    daemon_reload: yes
+    state: restarted

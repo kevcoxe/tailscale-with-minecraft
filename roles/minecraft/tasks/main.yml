@@ -1,0 +1,9 @@
+---
+# tasks file for roles/minecraft- name: Update apt packages
+- name: install minecraft java
+  include_tasks: minecraft_java.yml
+  when: minecraft_version == "java"
+
+- name: install minecraft bedrock
+  include_tasks: minecraft_bedrock.yml
+  when: minecraft_version == "bedrock"

@@ -1,0 +1,34 @@
+---
+# tasks file for roles/tailscale
+- name: Update apt packages
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+- name: Install prereqs
+  apt:
+    name: curl
+    state: latest
+
+# install on ubuntu 20.04
+- name: install tailscale ubuntu 20.04
+  include_tasks: install_tailscale_ubuntu_20.04.yml
+  when: ubuntu_version == "20.04"
+
+# install on ubuntu 16.04
+- name: install tailscale ubuntu 16.04
+  include_tasks: install_tailscale_ubuntu_16.04.yml
+  when: ubuntu_version == "16.04"
+
+# install tailscale
+- name: install tailscale
+  apt:
+    update_cache: yes
+    name: tailscale
+    state: latest
+
+# start tailscale
+- name: start tailscale
+  command: tailscale up --authkey {{ tailscale_auth_key }}
+
+# get tailscale status
+- name: get tailscale status
+  command: tailscale status

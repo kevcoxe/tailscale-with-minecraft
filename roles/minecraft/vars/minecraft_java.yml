@@ -1,0 +1,10 @@
+minecraft_dir: "/opt/minecraft"
+minecraft_server_jar_location: "{{ minecraft_dir }}/minecraft_server.jar"
+minecraft_eula_location: "{{ minecraft_dir }}/eula.txt"
+minecraft_server_properties_location: "{{ minecraft_dir }}/server.properties"
+
+minecraft_server_initial_ram: 1024M
+minecraft_server_max_ram: 1024M
+minecraft_start_server_command: "java -Xms{{ minecraft_server_initial_ram }} -Xmx{{ minecraft_server_max_ram }} -jar {{ minecraft_server_jar_location }} nogui"
+
+minecraft_download_url: https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar

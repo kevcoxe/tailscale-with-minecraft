@@ -1,0 +1,4 @@
+---
+# vars file for roles/minecraft
+minecraft_service_location: /lib/systemd/system/minecraft.service
+minecraft_version: java

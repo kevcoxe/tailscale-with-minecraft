@@ -1,0 +1,2 @@
+tailscale_package_key_url: https://pkgs.tailscale.com/stable/ubuntu/focal.gpg
+tailscale_package_repo_url: https://pkgs.tailscale.com/stable/ubuntu/focal.list

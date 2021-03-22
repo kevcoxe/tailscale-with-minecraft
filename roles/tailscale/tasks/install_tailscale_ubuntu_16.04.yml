@@ -1,0 +1,19 @@
+- name: include vars for 16.04
+  include_vars:
+    file: ubuntu_16.04.yml
+
+# install on ubuntu 16.04
+- name: install apt-transport-https
+  apt:
+    name: apt-transport-https
+    state: latest
+
+- name: add tailscale package key
+  apt_key:
+    url: "{{ tailscale_package_key_url }}"
+    state: present
+
+- name: add tailscale package repository
+  get_url:
+    url: "{{ tailscale_package_repo_url }}"
+    dest: /etc/apt/sources.list.d/tailscale.list

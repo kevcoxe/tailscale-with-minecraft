@@ -1,0 +1,14 @@
+- name: include vars for 20.04
+  include_vars:
+    file: ubuntu_20.04.yml
+
+# install on ubuntu 20.04
+- name: Add Tailscale package key
+  apt_key:
+    url: "{{ tailscale_package_key_url }}"
+    state: present
+
+- name: Add Tailscale package repository
+  get_url:
+    url: "{{ tailscale_package_repo_url }}"
+    dest: /etc/apt/sources.list.d/tailscale.list

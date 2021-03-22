@@ -1,0 +1,44 @@
+minecraft_config_spawn_protection: 16
+minecraft_config_max_tick_time: 60000
+minecraft_config_query_port: 25565
+minecraft_config_generator_settings: ""
+minecraft_config_force_gamemode: false
+minecraft_config_allow_nether: true
+minecraft_config_enforce_whitelist: false
+minecraft_config_gamemode: survival
+minecraft_config_broadcast_console_to_ops: true
+minecraft_config_enable_query: false
+minecraft_config_player_idle_timeout: 0
+minecraft_config_difficulty: hard
+minecraft_config_spawn_monsters: true
+minecraft_config_broadcast_rcon_to_ops: true
+minecraft_config_op_permission_level: 4
+minecraft_config_pvp: true
+minecraft_config_snooper_enabled: true
+minecraft_config_level_type: default
+minecraft_config_hardcore: true
+minecraft_config_enable_command_block: false
+minecraft_config_max_players: 20
+minecraft_config_network_compression_threshold: 256
+minecraft_config_resource_pack_sha1: 
+minecraft_config_max_world_size: 29999984
+minecraft_config_function_permission_level: 2
+minecraft_config_rcon_port: 25575
+minecraft_config_server_port: 25565
+minecraft_config_server_ip: ""
+minecraft_config_spawn_npcs: true
+minecraft_config_allow_flight: false
+minecraft_config_level_name: "ansible world"
+minecraft_config_view_distance: 10
+minecraft_config_resource_pack: ""
+minecraft_config_spawn_animals: true
+minecraft_config_white_list: false
+minecraft_config_rcon_password: ""
+minecraft_config_generate_structures: true
+minecraft_config_online_mode: true
+minecraft_config_max_build_height: 256
+minecraft_config_level_seed: ""
+minecraft_config_prevent_proxy_connections: false
+minecraft_config_use_native_transport: true
+minecraft_config_motd: "a minecraft server from ansible"
+minecraft_config_enable_rcon: false

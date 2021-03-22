@@ -1,0 +1,7 @@
+
+minecraft_dir: "/opt/minecraft_bedrock"
+minecraft_bedrock_zip_location: "{{minecraft_dir }}/bedrock.zip"
+minecraft_bedrock_location: "{{minecraft_dir }}/bedrock_server"
+
+minecraft_start_server_command: "{{ minecraft_bedrock_location }}"
+minecraft_download_url: https://minecraft.azureedge.net/bin-linux/bedrock-server-1.16.210.06.zip

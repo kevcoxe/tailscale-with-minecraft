@@ -1,0 +1,59 @@
+- name: include java vars
+  include_vars:
+    file: minecraft_java.yml
+
+- name: update apt packages
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+- name: include server config vars
+  include_vars:
+    file: server_properties.yml
+
+- name: install requirements
+  apt:
+    pkg:
+      - openjdk-8-jre-headless
+      - screen
+    state: latest
+
+- name: allow minecraft port
+  ufw:
+    rule: allow
+    port: '25565'
+
+- name: make sure minecraft dir exists
+  file:
+    path: "{{ minecraft_dir }}"
+    state: directory
+    owner: "{{ minecraft_user }}"
+
+- name: downloaded the latest version of minecraft
+  get_url:
+    url: "{{ minecraft_download_url }}"
+    dest: "{{ minecraft_server_jar_location }}"
+
+- name: create eula
+  template:
+    src: eula.txt.j2
+    dest: "{{ minecraft_eula_location }}"
+    owner: "{{ minecraft_user }}"
+
+- name: create minecraft server properties
+  template:
+    src: server.properties.j2
+    dest: "{{ minecraft_server_properties_location }}"
+
+- name: create minecraft service
+  template:
+    src: minecraft.service.j2
+    dest: "{{ minecraft_service_location }}"
+
+- name: reload daemon
+  systemd:
+    daemon_reload: yes
+
+- name: start minecraft service
+  systemd:
+    name: minecraft
+    daemon_reload: yes
+    state: restarted

@@ -1,0 +1,10 @@
+[Unit]
+Description=Minecraft server
+
+[Service]
+User={{ minecraft_user }}
+WorkingDirectory={{ minecraft_dir }}
+ExecStart={{ minecraft_start_server_command }}
+
+[Install]
+WantedBy=multi-user.target

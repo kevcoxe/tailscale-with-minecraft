@@ -1,0 +1,11 @@
+---
+  - hosts: minecraft
+    remote_user: "{{ minecraft_user }}"
+    become: true
+    vars_files:
+      - vars/tailscale-secrets.yml
+      - vars/minecraft-secrets.yml
+    roles:
+      - tailscale
+      - minecraft
+  
